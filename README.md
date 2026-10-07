@@ -2,11 +2,11 @@
 Dibuat oleh Christian Danny 5024251045
 
 ## Struktur Repositori
-2ez4u
-backend/m1_pesanan.py
-data/pesanan.csv, peta.csv
-frontend/app.py
-readme.md
+- 2ez4u
+- backend/m1_pesanan.py
+- data/pesanan.csv, peta.csv
+- frontend/ui.py
+- readme.md
 
 ## Status Proyek
-Menyicil M1 - baru pembacaan file
+Finishing M1 dan Membuat UI tapi masih bug
