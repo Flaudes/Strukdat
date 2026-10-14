@@ -43,7 +43,7 @@ def muat_csv_pesanan(path_csv):
                 status=cols[8].strip()
             )
             daftar.append(p)
-    return daftar                                                   # Buat baca data di csv
+    return daftar                                       # Buat baca data di csv
 
 class DynamicArray:                                     # Metode Array 
     def __init__(self, capacity=4):
@@ -60,16 +60,16 @@ class DynamicArray:                                     # Metode Array
 
     def get(self, index):  # O(1)
         if 0 <= index < self.size:
-            return self.data[index]
+            return self.data[index-1]
         return None
 
-    def tambah_reguler(self, item):  # O(1) - Masuk paling belakang
+    def tambah_reguler(self, item):                     # O(1) Amortized - Masuk paling belakang
         if self.size == self.capacity:
             self._resize(self.capacity * 2)
         self.data[self.size] = item
         self.size += 1
 
-    def tambah_vip(self, item):  # O(n) - Masuk paling depan (menggeser semua elemen ke kanan)
+    def tambah_vip(self, item):                         # O(n) - Masuk paling depan (menggeser semua elemen ke kanan)
         if self.size == self.capacity:
             self._resize(self.capacity * 2)
         for i in range(self.size, 0, -1):
@@ -77,7 +77,7 @@ class DynamicArray:                                     # Metode Array
         self.data[0] = item
         self.size += 1
 
-    def tambah_prioritas(self, item):  # O(n) - Masuk ke tengah barisan
+    def tambah_prioritas(self, item):                   # O(n) - Masuk ke tengah barisan
         if self.size == self.capacity:
             self._resize(self.capacity * 2)
         mid = self.size // 2
@@ -86,7 +86,7 @@ class DynamicArray:                                     # Metode Array
         self.data[mid] = item
         self.size += 1
 
-    def hapus(self, index):  # O(n) - Hapus dan geser elemen tersisa ke kiri
+    def hapus(self, index):                             # O(n) - Hapus dan geser elemen tersisa ke kiri
         if not (0 <= index < self.size):
             return None
         val = self.data[index]
@@ -96,7 +96,7 @@ class DynamicArray:                                     # Metode Array
         self.size -= 1
         return val
 
-class Node:                             # Metode LinkedList
+class Node:                                             # Metode LinkedList
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -116,7 +116,7 @@ class LinkedList:
             curr = curr.next
         return curr.data
 
-    def tambah_reguler(self, item):  # O(1) via pointer tail
+    def tambah_reguler(self, item):                     # O(1) via pointer tail
         new_node = Node(item)
         if not self.head:
             self.head = new_node
@@ -126,7 +126,7 @@ class LinkedList:
             self.tail = new_node
         self.size += 1
 
-    def tambah_vip(self, item):  # O(1) via pointer head
+    def tambah_vip(self, item):                         # O(1) via pointer head
         new_node = Node(item)
         if not self.head:
             self.head = new_node
@@ -136,7 +136,7 @@ class LinkedList:
             self.head = new_node
         self.size += 1
 
-    def tambah_prioritas(self, item):  # O(n) - Penelusuran ke pertengahan
+    def tambah_prioritas(self, item):                   # O(n) - Penelusuran ke pertengahan
         if self.size == 0 or self.size == 1:
             self.tambah_vip(item)
             return
@@ -149,7 +149,7 @@ class LinkedList:
         curr.next = new_node
         self.size += 1
 
-    def hapus(self, index):  # O(n) - Menelusuri dan memutus rantai
+    def hapus(self, index):                             # O(n) - Menelusuri dan memutus rantai
         if not (0 <= index < self.size):
             return None
             
