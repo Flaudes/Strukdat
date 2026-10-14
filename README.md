@@ -9,4 +9,6 @@ Dibuat oleh Christian Danny 5024251045
 - readme.md
 
 ## Status Proyek
-Finishing M1 dan Membuat UI tapi masih bug
+- FINISHED M2 & M3
+- Cara Run:
+- buka terminal, ketik "python app.py"
